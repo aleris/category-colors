@@ -6,10 +6,10 @@ yarn build
 
 cd dist
 
-git switch main
+git init
+git checkout -b main
 git add -A
 git commit -m 'deploy'
-
-git subtree push --prefix dist origin gh-pages
+git push -f git@github.com:aleris/category-colors.git main:gh-pages
 
 cd -
