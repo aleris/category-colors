@@ -9,7 +9,7 @@ It is based on the article
 
 Initially forked from https://github.com/ilikescience/category-colors/ and rewritten in Typescript with a React UI.
 
-The generator is available online at . 
+The generator is available online at: https://aleris.github.io/category-colors/. 
 
 ## Running
 
