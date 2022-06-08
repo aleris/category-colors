@@ -1,3 +1,5 @@
+// https://github.com/ilikescience/category-colors
+
 const chroma = require("chroma-js");
 
 const targetColors = [
@@ -75,7 +77,7 @@ const averageDistanceFromtargetColors = (colors) => {
 
 // Bretel et al method for simulating color vision deficiency
 // Adapted from https://github.com/MaPePeR/jsColorblindSimulator
-// In turn adapted from libDaltonLens https://daltonlens.org (public domain) 
+// In turn adapted from libDaltonLens https://daltonlens.org (public domain)
 
 // convert a linear rgb value to sRGB
 const linearRGB_from_sRGB = (v) => {
@@ -240,7 +242,7 @@ const cost = (state) => {
     const deuteranopiaDistances = distances(state, "Deuteranopia");
     const tritanopiaDistances = distances(state, "Tritanopia");
 
-    const energyScore =  100 - average(normalDistances); 
+    const energyScore =  100 - average(normalDistances);
     const protanopiaScore = 100 - average(protanopiaDistances);
     const deuteranopiaScore = 100 - average(deuteranopiaDistances);
     const tritanopiaScore = 100 - average(tritanopiaDistances);

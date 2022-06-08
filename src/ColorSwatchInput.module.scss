@@ -1,0 +1,31 @@
+.colorSwatchInput {
+  display: inline-block;
+  margin: 0.5rem;
+  padding: 0;
+  color: white;
+  font-weight: bold;
+  font-family: monospace;
+  font-size: 1.125rem;
+  text-align: center;
+  white-space: nowrap;
+
+  .colorInput {
+    border: none;
+    width: 6rem;
+    padding: 0.5rem 2rem 0.5rem 0.5rem;
+    margin-right: -2rem;
+    color: inherit;
+    font-weight: inherit;
+    font-size: inherit;
+    text-align: center;
+    text-transform: uppercase;
+  }
+
+  .removeButton {
+    padding: 1px 0 0 1px;
+    height: 1.25rem;
+    width: 1.25rem;
+    font-size: 0.85rem;
+    color: #444
+  }
+}

@@ -1,3 +1,23 @@
+# Category Colors
+
+A generator for category colors for charts and visualization that uses a simulated annealing algorithm with a cost 
+function that is maximizing the differences and accessibility of the colors in the set.
+
+It is based on the article
+[How to pick the least wrong colors](https://matthewstrom.com/writing/how-to-pick-the-least-wrong-colors/) by 
+[Matthew Ström](https://matthewstrom.com/).
+
+Initially forked from https://github.com/ilikescience/category-colors/ and rewritten in Typescript with a React UI.
+
+The generator is available online at . 
+
+## Running
+
+- `yarn dev` to start the local server.
+- `yarn test` to run the tests.
+
+Below is the original README:
+
 ## How to pick the least wrong colors
 
 This is the code to go along with the essay on my website, [How to pick the least wrong colors](https://matthewstrom.com/writing/how-to-pick-the-least-wrong-colors/).
