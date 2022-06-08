@@ -6,7 +6,7 @@ yarn build
 
 cd dist
 
-git git switch main
+git switch main
 git add -A
 git commit -m 'deploy'
 
