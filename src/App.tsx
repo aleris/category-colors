@@ -1,10 +1,11 @@
 import { useEffect, useState } from 'react'
 import { Fit, HexColor } from './fit/Fit'
-import { ColorSwatchInput } from './ColorSwatchInput'
-import { CopyPasteSupport } from './CopyPasteSupport'
+import { ColorSwatchInput, ColorSwatchType } from './ColorSwatchInput'
+import { ClipboardSupport } from './ClipboardSupport'
 import { ExampleChart, makeExampleChartData } from './ExampleChart'
 import styles from './App.module.scss'
 import { Footer } from './Footer'
+
 
 const defaultTemplateColors = [
     '#9966FF',
@@ -46,6 +47,11 @@ function App() {
         const updated = Array.from(templateColors)
         updated[index] = color
         setTemplateColors(updated)
+        return
+    }
+
+    const handleTemplateColorOnPaste = (colors: HexColor[]) => {
+        setTemplateColors(colors)
     }
 
     const handleOnAddTemplateColor = () => {
@@ -68,14 +74,14 @@ function App() {
     }
 
     const handlePasteTemplateColorsOnClick = async () => {
-        const colors = await CopyPasteSupport.paste()
-        if (0 < colors.length) {
+        const colors = await ClipboardSupport.paste()
+        if (1 < colors.length) {
             setTemplateColors(colors)
         }
     }
 
     const handleCopyOptimizedColorsOnClick = () => {
-        CopyPasteSupport.copy(optimizedColors)
+        ClipboardSupport.copy(optimizedColors)
     }
 
     return (
@@ -91,11 +97,13 @@ function App() {
                 <section className={styles.colorsSection}>
                     {templateColors.map((color, index) =>
                         <ColorSwatchInput
+                            type={ColorSwatchType.Template}
                             key={index}
                             color={color}
                             removeDisabled={isRunningOptimization || templateColors.length <= 2}
-                            onChange={color => handleTemplateColorOnChange(color, index)}
                             onRemoveClick={() => handleTemplateColorOnRemoveClick(index)}
+                            onChange={color => handleTemplateColorOnChange(color, index)}
+                            onPaste={colors => handleTemplateColorOnPaste(colors)}
                         />
                     )}
                     <button
@@ -142,11 +150,12 @@ function App() {
 
                     {optimizedColors.map((color, index) =>
                         <ColorSwatchInput
+                            type={ColorSwatchType.Optimized}
                             key={index}
                             color={color}
                             readonly={true}
-                            removeDisabled={isRunningOptimization || optimizedColors.length <= 3}
                             onRemoveClick={() => handleOptimizedColorOnRemoveClick(index)}
+                            removeDisabled={isRunningOptimization || optimizedColors.length <= 3}
                         />
                     )}
                     <button

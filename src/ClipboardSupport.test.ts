@@ -1,23 +1,23 @@
 import { describe, it, expect } from 'vitest'
-import { CopyPasteSupport } from './CopyPasteSupport'
+import { ClipboardSupport } from './ClipboardSupport'
 
 describe.concurrent('CopyPasteSupport', () => {
     it('extract colors from simple text', () => {
         const text = `#AC2444, #65c590\n#B9A263`
-        const colors = CopyPasteSupport.fromText(text)
+        const colors = ClipboardSupport.fromText(text)
         expect(colors).toEqual(['#AC2444', '#65C590', '#B9A263'])
     })
 
     it('extract colors from text without #', () => {
         const text = `3ec240 and B9A263`
-        const colors = CopyPasteSupport.fromText(text)
+        const colors = ClipboardSupport.fromText(text)
         expect(colors).toEqual(['#3EC240', '#B9A263'])
     })
 
     it('extract colors from text copied from article', () => {
         const text = `The colors on the left (#3ec240, #65c590, #ac2444, #b9a263, and #ab088d) are the randomly-chosen 
             starting point of the algorithm. Running them through my loss function results in a score of 217.8.`
-        const colors = CopyPasteSupport.fromText(text)
+        const colors = ClipboardSupport.fromText(text)
         expect(colors).toEqual(['#3EC240', '#65C590', '#AC2444', '#B9A263', '#AB088D'])
     })
 
@@ -45,7 +45,7 @@ describe.concurrent('CopyPasteSupport', () => {
 @October-5-hsla: hsla(14, 88, 31, 1);
         `
 
-        const colors = CopyPasteSupport.fromText(text)
+        const colors = ClipboardSupport.fromText(text)
         expect(colors).toEqual(['#520120', '#08403E', '#706513', '#B57114', '#962B09'])
     })
 })
